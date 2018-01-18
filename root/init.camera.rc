@@ -1,0 +1,50 @@
+on early-init
+
+on init
+
+on early-fs
+
+on fs
+
+on post-fs
+
+on post-fs-data
+
+on early-boot
+	write /sys/bus/platform/drivers/huawei,altek6045/firmware /system/miniisp/PLK/
+	service HwCamCfgSvr /system/bin/HwCamCfgSvr hi3635 PLK
+	class main
+	user media
+	group audio camera inet net_bt net_bt_admin net_bw_acct drmrpc mediadrm system
+
+on boot
+	mkdir /data/nfc
+	chown nfc nfc /data/nfc
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_fwupdate
+	chmod 0664 /sys/bus/i2c/devices/0-0028/nfc_fwupdate
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/nxp_config_name
+	chmod 0664 /sys/bus/i2c/devices/0-0028/nxp_config_name
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_brcm_conf_name
+	chmod 0664 /sys/bus/i2c/devices/0-0028/nfc_brcm_conf_name
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_sim_switch
+	chmod 0664 /sys/bus/i2c/devices/0-0028/nfc_sim_switch
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_sim_status
+	chmod 0444 /sys/bus/i2c/devices/0-0028/nfc_sim_status
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/rd_nfc_sim_status
+	chmod 0444 /sys/bus/i2c/devices/0-0028/rd_nfc_sim_status
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_enable_status
+	chmod 0664 /sys/bus/i2c/devices/0-0028/nfc_enable_status
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_card_num
+	chmod 0444 /sys/bus/i2c/devices/0-0028/nfc_card_num
+	chown nfc nfc /sys/bus/i2c/devices/0-0028/nfc_chip_type
+	chmod 0444 /sys/bus/i2c/devices/0-0028/nfc_chip_type
+    chmod  0660  /dev/fingerprint
+    chown  system  system  /dev/fingerprint
+    chmod  0660  /sys/devices/platform/fingerprint/irq
+    chown  system  system  /sys/devices/platform/fingerprint/irq
+    chown  system system /sys/devices/platform/fingerprint/fingerprint_chip_info
+
+	chown root system /dev/spidev0.0
+	chmod 0660 /dev/spidev0.0
+
+	write /sys/class/spi_master/spi0/spi0.0/misp_config "log_config 3 0"

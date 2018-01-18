@@ -1,0 +1,20 @@
+# Android fstab file.
+#<src>						<mnt_point>	<type>	<mnt_flags and options>		<fs_mgr_flags>
+/dev/block/platform/hi_mci.0/by-name/cust	/cust		ext4	ro,seclabel,nosuid,nodev,relatime,data=ordered	wait
+/dev/block/platform/hi_mci.0/by-name/system	/system		ext4	ro,seclabel,relatime,data=ordered		wait
+/dev/block/platform/hi_mci.0/by-name/cache	/cache		ext4	rw,seclabel,nosuid,nodev,noatime,discard,noauto_da_alloc,data=ordered					wait,check
+/dev/block/platform/hi_mci.0/by-name/userdata	/data		ext4	rw,seclabel,nosuid,nodev,noatime,discard,noauto_da_alloc,data=ordered					wait,check,encryptable=footer
+/dev/block/platform/hi_mci.0/by-name/misc	/misc		emmc	defaults			defaults
+/dev/block/platform/hi_mci.0/by-name/boot	/boot		emmc	defaults			defaults
+/dev/block/platform/hi_mci.0/by-name/recovery	/recovery	emmc	defaults			defaults
+/dev/block/platform/hi_mci.0/by-name/3rdmodem	/3rdmodem	ext4	defaults			defaults
+/dev/block/platform/hi_mci.0/by-name/modemlog	/modem_log	ext4 rw,context=u:object_r:modem_log_file:s0,nosuid,nodev,noatime,discard,noauto_da_alloc,data=ordered	defaults
+/dev/block/platform/hi_mci.0/by-name/modemnvm1	/mnvm1:0	ext4	rw,seclabel,relatime,data=ordered defaults
+/dev/block/platform/hi_mci.0/by-name/modemnvm2	/mnvm2:0	ext4	rw,context=u:object_r:modem_nv_file:s0,nosuid,nodev,noatime,data=ordered				defaults
+/dev/block/platform/hi_mci.0/by-name/modemnvm3	/mnvm3:0	ext4	rw,context=u:object_r:modem_nv_file:s0,nosuid,nodev,noatime,discard,noauto_da_alloc,data=ordered	defaults
+/dev/block/platform/hi_mci.0/by-name/modemlog	/modem_log	ext4	rw,context=u:object_r:modem_log_file:s0,nosuid,nodev,noatime,discard,noauto_da_alloc,data=ordered	defaults
+/dev/block/platform/hi_mci.0/by-name/securetystorage	/sec_storage	ext4 rw,context=u:object_r:teecd_data_file:s0,nosuid,nodev,noatime,discard,nodelalloc,data=journal		defaults
+/dev/block/platform/hi_mci.0/by-name/splash2	/splash2 	ext4	rw,context=u:object_r:splash2_data_file:s0,nosuid,nodev,relatime,data=ordered				defaults
+/devices/hi_mci.1/mmc_host/mmc1/*		auto		vfat	defaults			voldmanaged=sdcard1:auto,noemulatedsd
+/dev/block/mmcblk1p1				auto		vfat	defaults		voldmanaged=sdcard0:auto,nonremovable,noemulatedsd
+/devices/hi6xxx-usb-otg/usb1/*			auto		vfat	defaults			voldmanaged=usbotg:auto

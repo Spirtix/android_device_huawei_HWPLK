@@ -1,0 +1,10 @@
+# Android fstab file.
+#<src>                                                  <mnt_point>         <type>    <mnt_flags and options>                       <fs_mgr_flags>
+# The filesystem that contains the filesystem checker binary (typically /system) cannot
+# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
+/dev/block/platform/hi_mci.0/by-name/boot        		/boot            	emmc    	defaults                                    recoveryonly
+/dev/block/platform/hi_mci.0/by-name/recovery    		/recovery        	emmc        defaults                                    recoveryonly
+/devices/hi_mci.1/mmc_host/mmc1/*                       auto                auto      defaults                                      voldmanaged=sdcard:auto,noemulatedsd
+/devices/hisi-usb-otg/usb1/*                            auto                auto      defaults                                      voldmanaged=usbotg:auto
+/dev/block/platform/hi_mci.0/by-name/userdata          /data                ext4      rw,nosuid,nodev,noatime,noauto_da_alloc,journal_async_commit,errors=panic    wait,check,encryptable=footer
+/dev/block/zram0             none         swap    defaults	zramsize=268435456
