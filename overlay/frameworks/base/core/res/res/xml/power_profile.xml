@@ -16,66 +16,114 @@
 ** limitations under the License.
 */
 -->
-<!-- DTS2014072901830 zwx216556 begin-->
+
 <device name="Android">
-  <!-- All values are in mA except as noted -->
+  <!-- Most values are the incremental current used by a feature,
+       in mA (measured at nominal voltage).
+       The default values are deliberately incorrect dummy values.
+       OEM's must measure and provide actual values before
+       shipping a device.
+       Example real-world values are given in comments, but they
+       are totally dependent on the platform and can vary
+       significantly, so should be measured on the shipping platform
+       with a power meter. -->
   <item name="none">0</item>
-  <item name="screen.on">120</item> <!-- min brite -->
-  <item name="bluetooth.active">95</item>
-  <item name="bluetooth.on">2.95</item>
-  <item name="bluetooth.at">2.95</item> <!-- TBD -->
-  <item name="screen.full">360</item> <!-- backlight 14 leds -->
-  <item name="wifi.on">0.8</item>
-  <item name="wifi.active">97</item>
-  <item name="wifi.scan">83</item>
-  <item name="dsp.audio">60</item> <!-- k3v3 -->
-  <item name="dsp.video">122</item>
-  <item name="radio.active">177</item>
-  <item name="gps.on">1.6</item>
-  <item name="battery.capacity">3000</item> <!-- 3000mAh -->
-  <item name="radio.scanning">52</item> <!-- TBD -->
-  <!-- Current consumed by the radio at different signal strengths, when paging  -->
-   <array name="radio.on"> <!-- 1 entry per signal strength bin, TBD -->
+  <item name="screen.on">139</item>  <!-- ~200mA -->
+  <item name="screen.full">380</item>  <!-- ~300mA -->
+  <item name="bluetooth.active">116</item> <!-- Bluetooth data transfer, ~10mA -->
+  <item name="bluetooth.on">2.8</item>  <!-- Bluetooth on & connectable, but not connected, ~0.1mA -->
+  <item name="wifi.on">0.06</item>  <!-- ~3mA -->
+  <item name="wifi.active">97</item>  <!-- WIFI data transfer, ~200mA -->
+  <item name="wifi.scan">100</item>  <!-- WIFI network scanning, ~100mA -->
+  <item name="dsp.audio">60</item> <!-- ~10mA -->
+  <item name="dsp.video">122</item> <!-- ~50mA -->
+  <item name="camera.flashlight">200</item> <!-- Avg. power for camera flash, ~160mA -->
+  <item name="camera.avg">700</item> <!-- Avg. power use of camera in standard usecases, ~550mA -->
+  <item name="radio.active">177</item> <!-- ~200mA -->
+  <item name="radio.scanning">65</item> <!-- cellular radio scanning for signal, ~10mA -->
+  <item name="gps.on">1.6</item> <!-- ~50mA -->
+  <!-- Current consumed by the radio at different signal strengths, when paging -->
+  <array name="radio.on"> <!-- Strength 0 to BINS-1 -->
       <value>15.0</value>
       <value>10.0</value>
       <value>10.0</value>
       <value>10.0</value>
       <value>10.0</value>
   </array>
-  <array name="cpu.speeds">
-    <value>403200</value> <!-- 400 MHz CPU speed -->
-    <value>604800</value> <!-- 600 MHz CPU speed -->
-    <value>806400</value> <!-- 800 MHz CPU speed -->
-    <value>1017600</value><!-- 1.0 GHz CPU speed -->
-    <value>1209600</value><!-- 1.2 GHz CPU speed -->
-    <value>1305600</value><!-- 1.3 GHz CPU speed -->
-    <value>1401600</value><!-- 1.4 GHz CPU speed -->
-    <value>1516800</value><!-- 1.5 GHz CPU speed -->
-    <value>1612800</value><!-- 1.6 GHz CPU speed -->
-    <value>1708800</value><!-- 1.7 GHz CPU speed -->
-    <value>1804800</value><!-- 1.8 GHz CPU speed -->
-    <value>2016000</value><!-- 2.1 GHz CPU speed -->
-    
+
+  <!-- A list of heterogeneous CPU clusters, where the value for each cluster represents the
+       number of CPU cores for that cluster.
+
+       Ex:
+       <array name="cpu.clusters.cores">
+         <value>4</value> // cluster 0 has cpu0, cpu1, cpu2, cpu3
+         <value>2</value> // cluster 1 has cpu4, cpu5
+       </array> -->
+  <array name="cpu.clusters.cores">
+      <value>4</value> <!-- cluster 0 has cpu0, cpu1, cpu2, cpu3 -->
+      <value>4</value> <!-- cluster 1 has cpu4, cpu5, cpu6, cpu7 -->
   </array>
-  <!-- Power consumption in suspend -->
-  <item name="cpu.idle">3</item> <!-- k3v3 -->
+
+    <!-- Different CPU speeds for cluster 0 as reported in
+       /sys/devices/system/cpu/cpu0/cpufreq/stats/time_in_state.
+
+       There must be one of these for each cluster, labeled:
+       cpu.speeds.cluster0, cpu.speeds.cluster1, etc... -->
+  <array name="cpu.speeds.cluster0">
+      <value>403200</value> <!-- 403 MHz CPU speed -->
+      <value>604800</value> <!-- 605 MHz CPU speed -->
+      <value>806400</value> <!-- 806 MHz CPU speed -->
+      <value>1017600</value> <!-- 1018 MHz CPU speed -->
+      <value>1209600</value> <!-- 1210 MHz CPU speed -->
+      <value>1305600</value> <!-- 1306 MHz CPU speed -->
+      <value>1401600</value> <!-- 1402 MHz CPU speed -->
+      <value>1516800</value> <!-- 1517 MHz CPU speed -->
+  </array>
+  <array name="cpu.speeds.cluster1">
+      <value>1017600</value> <!-- 1018 MHz CPU speed -->
+      <value>1209600</value> <!-- 1210 MHz CPU speed -->
+      <value>1401600</value> <!-- 1402 MHz CPU speed -->
+      <value>1612800</value> <!-- 1613 MHz CPU speed -->
+      <value>1708800</value> <!-- 1709 MHz CPU speed -->
+      <value>1804800</value> <!-- 1805 MHz CPU speed -->
+      <value>2016000</value> <!-- 2016 MHz CPU speed -->
+  </array>
+
+  <!-- Current at each CPU speed for cluster 0, as per 'cpu.speeds.cluster0'.
+       Like cpu.speeds.cluster0, there must be one of these present for
+       each heterogeneous CPU cluster. -->
+  <array name="cpu.active.cluster0">
+      <value>105</value> <!-- 105 mA -->
+      <value>190</value> <!-- 190 mA -->
+      <value>280</value> <!-- 280 mA -->
+      <value>395</value> <!-- 395 mA -->
+      <value>510</value> <!-- 510 mA -->
+      <value>610</value> <!-- 610 mA -->
+      <value>740</value> <!-- 740 mA -->
+      <value>870</value> <!-- 870 mA -->
+  </array>
+  <array name="cpu.active.cluster1">
+      <value>395</value> <!-- 395 mA -->
+      <value>510</value> <!-- 510 mA -->
+      <value>740</value> <!-- 740 mA -->
+      <value>995</value> <!-- 995 mA -->
+      <value>1105</value> <!-- 1105 mA -->
+      <value>1335</value> <!-- 1335 mA -->
+      <value>1655</value> <!-- 1655 mA -->
+  </array>
+
+  <!-- Current when CPU is idle -->
+  <item name="cpu.idle">3</item>
   <!-- Power consumption due to wake lock held -->
-  <item name="cpu.awake">50</item> <!-- k3v3 -->
-  <!-- Power consumption at different speeds -->
-  <array name="cpu.active">
-      <value>105</value>
-      <value>190</value>
-      <value>280</value>
-      <value>395</value>
-      <value>510</value>
-      <value>610</value>
-      <value>740</value>
-      <value>870</value>
-      <value>995</value>
-      <value>1105</value>
-      <value>1335</value>
-      <value>1655</value>
-      
+  <item name="cpu.awake">40.2</item> <!-- k3v3 -->
+  <!-- This is the battery capacity in mAh (measured at nominal voltage) -->
+  <item name="battery.capacity">2680</item>
+
+  <array name="wifi.batchedscan"> <!-- mA (This is stolen from moto shamu)-->
+      <value>0.015</value> <!-- 1-8/hr -->
+      <value>0.122</value>  <!-- 9-64/hr -->
+      <value>0.962</value>   <!-- 65-512/hr -->
+      <value>7.682</value>    <!-- 513-4,096/hr -->
+      <value>61.488</value>    <!-- 4097-/hr -->
   </array>
 </device>
-<!-- DTS2014072901830 zwx216556 end-->
