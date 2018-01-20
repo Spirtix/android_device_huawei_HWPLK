@@ -100,19 +100,19 @@ BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril/
 # WIFI
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 BOARD_WLAN_DEVICE := bcmdhd
-BOARD_WLAN_DEVICE_REV := bcm4334
+BOARD_WLAN_DEVICE_REV := bcm4339
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
 BOARD_HOSTAPD_DRIVER := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
-WIFI_DRIVER_NVRAM_PATH := "/vendor/firmware/nvram4334_hw.txt"
+WIFI_DRIVER_NVRAM_PATH := "/vendor/firmware/nvram4339_hw.txt"
 WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/bcmdhd/parameters/firmware_path"
-WIFI_DRIVER_FW_PATH_STA := "/system/vendor/firmware/fw_bcm4334_hw.bin"
-WIFI_DRIVER_FW_PATH_AP := "/system/vendor/firmware/fw_bcm4334_apsta_hw.bin"
+WIFI_DRIVER_FW_PATH_STA := "/system/vendor/firmware/fw_bcm4339_hw.bin"
+WIFI_DRIVER_FW_PATH_AP := "/system/vendor/firmware/fw_bcm4339_apsta_hw.bin"
 WIFI_BAND := 802_11_ABGN
-WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/vendor/firmware/fw_bcm4334_hw.bin nvram_path=/system/vendor/firmware/nvram4334_hw_fifa_ul.txt ifname=wlan0"
-WIFI_DRIVER_MODULE_P2P := "firmware_path=/system/vendor/firmware/fw_bcm4334_apsta_hw.bin nvram_path=/system/vendor/firmware/nvram4334_hw_fifa_ul.txt ifname=wlan0"
-WIFI_DRIVER_MODULE_AP_ARG := "firmware_path=/system/vendor/firmware/fw_bcm4334_apsta_hw.bin nvram_path=/system/vendor/firmware/nvram4334_hw_fifa_ul.txt ifname=wlan0"
+WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/vendor/firmware/fw_bcm4339_hw.bin nvram_path=/system/vendor/firmware/nvram4339_hw_fifa_ul.txt ifname=wlan0"
+WIFI_DRIVER_MODULE_P2P := "firmware_path=/system/vendor/firmware/fw_bcm4339_apsta_hw.bin nvram_path=/system/vendor/firmware/nvram4339_hw_fifa_ul.txt ifname=wlan0"
+WIFI_DRIVER_MODULE_AP_ARG := "firmware_path=/system/vendor/firmware/fw_bcm4339_apsta_hw.bin nvram_path=/system/vendor/firmware/nvram4339_hw_fifa_ul.txt ifname=wlan0"
 BOARD_LEGACY_NL80211_STA_EVENTS := true
 BOARD_NO_APSME_ATTR := true
 BOARD_HAVE_BLUETOOTH := true
