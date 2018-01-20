@@ -72,8 +72,8 @@ PRODUCT_COPY_FILES += \
 
 # Thermal engine
 PRODUCT_COPY_FILES += \
-	    $(LOCAL_PATH)/prebuilts/thermald.xml:system/etc/thermald.xml \
-	    $(LOCAL_PATH)/prebuilts/thermald_performance.xml:system/etc/thermald_performance.xml
+	    $(LOCAL_PATH)/thermal/thermald.xml:system/etc/thermald.xml \
+	    $(LOCAL_PATH)/thermal/thermald_performance.xml:system/etc/thermald_performance.xml
 
 # PERMISSIONS
 PRODUCT_COPY_FILES += \
