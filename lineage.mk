@@ -18,7 +18,7 @@
 PRODUCT_RELEASE_NAME := PLK-L01
 
 # Inherit device configuration
-$(call inherit-product, device/huawei/HWPLK/lineage_hwplk.mk)
+$(call inherit-product, device/huawei/HWPLK/lineage_HWPLK.mk)
 
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
