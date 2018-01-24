@@ -1,0 +1,25 @@
+#
+# ADDITIONAL_DEFAULT_PROPERTIES
+#
+ro.config.hw_perfhub=true
+ro.adb.secure=0
+ro.secure=0
+ro.debuggable=1
+ro.allow.mock.location=1
+persist.sys.root_access=3
+ro.zygote=zygote64_32
+persist.logd.logpersistd=logcatd
+sys.init_log_level=3
+dalvik.vm.image-dex2oat-Xms=64m
+dalvik.vm.image-dex2oat-Xmx=64m
+dalvik.vm.dex2oat-Xms=64m
+dalvik.vm.dex2oat-Xmx=512m
+ro.dalvik.vm.native.bridge=0
+debug.atrace.tags.enableflags=0
+#
+# BOOTIMAGE_BUILD_PROPERTIES
+#
+ro.bootimage.build.date=Po led 22 19:31:19 CET 2018
+ro.bootimage.build.date.utc=1516645879
+ro.bootimage.build.fingerprint=HUAWEI/lineage_HWPLK/HWPLK:6.0.1/MOI10E/94533d600b:eng/test-keys
+persist.sys.usb.config=adb
