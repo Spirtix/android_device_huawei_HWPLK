@@ -169,14 +169,53 @@ PRODUCT_PACKAGES += \
 
 # RAMDISK
 PRODUCT_PACKAGES += \
-	fstab.hi3635 \
-	init.hi3635.rc \
-	init.recovery.hi3635.rc \
-	init.hi3635.usb.rc \
-	init.hi3635.gps.rc \
-	ueventd.hi3635.rc \
-	init.hi3635.power.rc \
 	init.hi3635.power.sh
+
+BOOT_RAMDISK_SRC = $(LOCAL_PATH)/rootdir
+BOOT_RAMDISK_DST = root
+PRODUCT_COPY_FILES += \
+$(BOOT_RAMDISK_SRC)/fstab.hi3635:$(BOOT_RAMDISK_DST)/fstab.hi3635 \
+$(BOOT_RAMDISK_SRC)/fstab.goldfish:$(BOOT_RAMDISK_DST)/fstab.goldfish \
+$(BOOT_RAMDISK_SRC)/fstab.ranchu:$(BOOT_RAMDISK_DST)/fstab.ranchu \
+$(BOOT_RAMDISK_SRC)/etc/custom.init.mods.rc:$(BOOT_RAMDISK_DST)/custom.init.mods.rc \
+$(BOOT_RAMDISK_SRC)/etc/custom.init.usb.rc:$(BOOT_RAMDISK_DST)/custom.init.usb.rc \
+$(BOOT_RAMDISK_SRC)/etc/init.goldfish.rc:$(BOOT_RAMDISK_DST)/init.goldfish \
+$(BOOT_RAMDISK_SRC)/etc/init.ranchu.rc:$(BOOT_RAMDISK_DST)/init.ranchu.rc \
+$(BOOT_RAMDISK_SRC)/etc/init.hi3635.rc:$(BOOT_RAMDISK_DST)/init.hi3635.rc \
+$(BOOT_RAMDISK_SRC)/etc/init.recovery.hi3635.rc:$(BOOT_RAMDISK_DST)/init.recovery.hi3635.rc \
+$(BOOT_RAMDISK_SRC)/etc/init.recovery.usb.rc:$(BOOT_RAMDISK_DST)/init.recovery.usb.rc \
+$(BOOT_RAMDISK_SRC)/etc/init.hi3635.usb.rc:$(BOOT_RAMDISK_DST)/init.hi3635.usb.rc \
+$(BOOT_RAMDISK_SRC)/etc/init.hi3635.gps.rc:$(BOOT_RAMDISK_DST)/init.hi3635.gps.rc \
+$(BOOT_RAMDISK_SRC)/etc/ueventd.hi3635.rc:$(BOOT_RAMDISK_DST)/ueventd.hi3635.rc \
+$(BOOT_RAMDISK_SRC)/etc/ueventd.goldfish.rc:$(BOOT_RAMDISK_DST)/ueventd.goldfish.rc \
+$(BOOT_RAMDISK_SRC)/etc/ueventd.ranchu.rc:$(BOOT_RAMDISK_DST)/ueventd.ranchu.rc \
+$(BOOT_RAMDISK_SRC)/etc/init.hi3635.power.rc:$(BOOT_RAMDISK_DST)/init.hi3635.power.rc \
+$(BOOT_RAMDISK_SRC)/etc/vendor.init.audio.rc:$(BOOT_RAMDISK_DST)/vendor.init.audio.rc \
+$(BOOT_RAMDISK_SRC)/etc/vendor.init.balong_modem.rc:$(BOOT_RAMDISK_DST)/vendor.init.balong_modem.rc \
+$(BOOT_RAMDISK_SRC)/etc/vendor.init.connectivity.bcm4339.rc:$(BOOT_RAMDISK_DST)/vendor.init.connectivity.bcm4339.rc \
+$(BOOT_RAMDISK_SRC)/etc/vendor.init.connectivity.gps.rc:$(BOOT_RAMDISK_DST)/vendor.init.connectivity.gps.rc \
+$(BOOT_RAMDISK_SRC)/etc/vendor.init.connectivity.rc:$(BOOT_RAMDISK_DST)/vendor.init.connectivity.rc \
+$(BOOT_RAMDISK_SRC)/etc/vendor.init.device.rc:$(BOOT_RAMDISK_DST)/vendor.init.device.rc \
+$(BOOT_RAMDISK_SRC)/etc/vendor.init.extmodem.rc:$(BOOT_RAMDISK_DST)/vendor.init.extmodem.rc \
+$(BOOT_RAMDISK_SRC)/etc/vendor.init.hi3635.rc:$(BOOT_RAMDISK_DST)/vendor.init.hi3635.rc \
+$(BOOT_RAMDISK_SRC)/etc/vendor.init.hisi.rc:$(BOOT_RAMDISK_DST)/vendor.init.hisi.rc \
+$(BOOT_RAMDISK_SRC)/etc/vendor.init.manufacture.rc:$(BOOT_RAMDISK_DST)/vendor.init.manufacture.rc \
+$(BOOT_RAMDISK_SRC)/etc/vendor.init.performance.rc:$(BOOT_RAMDISK_DST)/vendor.init.performance.rc \
+$(BOOT_RAMDISK_SRC)/etc/vendor.init.platform.rc:$(BOOT_RAMDISK_DST)/vendor.init.platform.rc \
+$(BOOT_RAMDISK_SRC)/etc/vendor.init.post-fs-data.rc:$(BOOT_RAMDISK_DST)/vendor.init.post-fs-data.rc \
+$(BOOT_RAMDISK_SRC)/etc/vendor.init.protocol.rc:$(BOOT_RAMDISK_DST)/vendor.init.protocol.rc \
+$(BOOT_RAMDISK_SRC)/etc/vendor.init.tee.rc:$(BOOT_RAMDISK_DST)/vendor.init.tee.rc \
+$(BOOT_RAMDISK_SRC)/sbin/teecd:$(BOOT_RAMDISK_DST)/sbin/teecd \
+$(BOOT_RAMDISK_SRC)/sbin/e2fsck_s:$(BOOT_RAMDISK_DST)/sbin/e2fsck_s \
+$(BOOT_RAMDISK_SRC)/sbin/emmc_partation:$(BOOT_RAMDISK_DST)/sbin/emmc_partation \
+$(BOOT_RAMDISK_SRC)/sbin/hdbd:$(BOOT_RAMDISK_DST)/sbin/hdbd \
+$(BOOT_RAMDISK_SRC)/sbin/kmsgcat:$(BOOT_RAMDISK_DST)/sbin/kmsgcat \
+$(BOOT_RAMDISK_SRC)/sbin/logctl_service:$(BOOT_RAMDISK_DST)/sbin/logctl_service \
+$(BOOT_RAMDISK_SRC)/sbin/ntfs-3gd:$(BOOT_RAMDISK_DST)/sbin/ntfs-3gd \
+$(BOOT_RAMDISK_SRC)/sbin/oeminfo_nvm_server:$(BOOT_RAMDISK_DST)/sbin/oeminfo_nvm_server \
+$(BOOT_RAMDISK_SRC)/sbin/hw_ueventd:$(BOOT_RAMDISK_DST)/sbin/hw_ueventd \
+$(BOOT_RAMDISK_SRC)/sbin/volisnotd:$(BOOT_RAMDISK_DST)/sbin/volisnotd \
+$(BOOT_RAMDISK_SRC)/sbin/check_root:$(BOOT_RAMDISK_DST)/sbin/check_root
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	persist.sys.root_access=3

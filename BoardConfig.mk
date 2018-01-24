@@ -22,7 +22,6 @@ BOARD_USES_CYANOGEN_HARDWARE := true
 BOARD_HARDWARE_CLASS := \
     hardware/cyanogen/cmhw \
     $(LOCAL_PATH)/cmhw
-
 # WEBGL
 ENABLE_WEBGL := true
 
@@ -176,7 +175,7 @@ TARGET_PROVIDES_INIT_TARGET_RC := true
 # PROPERTIES
 TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
 
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/fstab.hi3635
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/recovery/fstab.hi3635
 # RECOVERY (twrp breaks brunch, I won't build it but if you really want to... uncomment following two lines)
 # RECOVERY_VARIANT := twrp
 #-include $(LOCAL_PATH)twrp.mk
