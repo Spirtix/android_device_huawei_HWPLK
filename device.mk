@@ -24,11 +24,6 @@ PRODUCT_PACKAGE_OVERLAYS += \
 DEVICE_PACKAGE_OVERLAYS += \
 	device/huawei/HWPLK/overlay
 
-# AUDIO
-PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
-	$(LOCAL_PATH)/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf
-
 # GPS libs
 #Somehow CM looks for this file with another name
 #I'l keep the stock ones there too.
