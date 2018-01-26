@@ -195,11 +195,10 @@ $(BOOT_RAMDISK_SRC)/etc/vendor.init.extmodem.rc:$(BOOT_RAMDISK_DST)/vendor.init.
 $(BOOT_RAMDISK_SRC)/etc/vendor.init.hi3635.rc:$(BOOT_RAMDISK_DST)/vendor.init.hi3635.rc \
 $(BOOT_RAMDISK_SRC)/etc/vendor.init.hisi.rc:$(BOOT_RAMDISK_DST)/vendor.init.hisi.rc \
 $(BOOT_RAMDISK_SRC)/etc/vendor.init.manufacture.rc:$(BOOT_RAMDISK_DST)/vendor.init.manufacture.rc \
-$(BOOT_RAMDISK_SRC)/etc/vendor.init.performance.rc:$(BOOT_RAMDISK_DST)/vendor.init.performance.rc \
 $(BOOT_RAMDISK_SRC)/etc/vendor.init.platform.rc:$(BOOT_RAMDISK_DST)/vendor.init.platform.rc \
 $(BOOT_RAMDISK_SRC)/etc/vendor.init.post-fs-data.rc:$(BOOT_RAMDISK_DST)/vendor.init.post-fs-data.rc \
-$(BOOT_RAMDISK_SRC)/etc/vendor.init.protocol.rc:$(BOOT_RAMDISK_DST)/vendor.init.protocol.rc \
 $(BOOT_RAMDISK_SRC)/etc/vendor.init.tee.rc:$(BOOT_RAMDISK_DST)/vendor.init.tee.rc \
+$(BOOT_RAMDISK_SRC)/etc/vendor.init.5844.rc:$(BOOT_RAMDISK_DST)/vendor.init.5844.rc \
 $(BOOT_RAMDISK_SRC)/sbin/teecd:$(BOOT_RAMDISK_DST)/sbin/teecd \
 $(BOOT_RAMDISK_SRC)/sbin/e2fsck_s:$(BOOT_RAMDISK_DST)/sbin/e2fsck_s \
 $(BOOT_RAMDISK_SRC)/sbin/emmc_partation:$(BOOT_RAMDISK_DST)/sbin/emmc_partation \
