@@ -443,15 +443,6 @@ on boot
 	chown system system /sys/class/sensors/airpress_sensor/read_airpress
 	chown system system /sys/class/sensors/airpress_sensor/set_calidata
 
-    chown system system /sys/devices/platform/huawei_sensor/set_fingersense_enable
-    chmod 0660 /sys/devices/platform/huawei_sensor/set_fingersense_enable
-    chown system system /sys/devices/platform/huawei_sensor/fingersense_req_data
-    chmod 0660 /sys/devices/platform/huawei_sensor/fingersense_req_data
-    chown system system /sys/devices/platform/huawei_sensor/fingersense_data_ready
-    chmod 0440 /sys/devices/platform/huawei_sensor/fingersense_data_ready
-    chown system system /sys/devices/platform/huawei_sensor/fingersense_latch_data
-    chmod 0440 /sys/devices/platform/huawei_sensor/fingersense_latch_data
-
 	chown system system /sys/class/hall/hall/state
 	chown system system /sys/class/hall/hall/report
 	chown system system /sys/class/hall/hall/info
@@ -464,9 +455,6 @@ on boot
 
     chown system system /sys/class/leds/lcd_backlight0/brightness
     chmod 644 /sys/class/leds/lcd_backlight0/brightness
-
-
-
 
     chown system camera /dev/imgsysbrg_vdec0
     chmod 660 /dev/imgsysbrg_vdec0
