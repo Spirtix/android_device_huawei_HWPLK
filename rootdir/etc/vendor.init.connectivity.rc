@@ -1,2 +1,3 @@
 import /vendor.init.connectivity.gps.rc
 import /vendor.init.connectivity.bcm4339.rc
+import /custom.init.fingerprint.rc
