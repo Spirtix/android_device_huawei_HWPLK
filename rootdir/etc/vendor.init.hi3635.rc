@@ -30,6 +30,9 @@ on early-boot
     chmod 664 /sys/class/devfreq/gpufreq/mali_ondemand/animation_boost
     chown system system /sys/class/devfreq/gpufreq/mali_ondemand/animation_boost_freq
     chmod 664 /sys/class/devfreq/gpufreq/mali_ondemand/animation_boost_freq
+    chown system system /sys/class/devfreq/gpufreq/polling_interval
+    chmod 664 /sys/class/devfreq/gpufreq/polling_interval
+    
 
     chown system system /sys/class/devfreq/ddrfreq/max_freq
     chmod 664 /sys/class/devfreq/ddrfreq/max_freq
@@ -41,11 +44,26 @@ on early-boot
     chmod 664 /sys/class/devfreq/ddrfreq/cur_freq
     chown system system /sys/class/devfreq/ddrfreq/available_frequencies
     chmod 664 /sys/class/devfreq/ddrfreq/available_frequencies
+    chown system system /sys/class/devfreq/ddrfreq/polling_interval
+    chmod 664 /sys/class/devfreq/ddrfreq/polling_interval
     chown system system /sys/kernel/set_hmp_thresholds/policy
-    chmod 0664 /sys/kernel/set_hmp_thresholds/policy	
+    chmod 0664 /sys/kernel/set_hmp_thresholds/policy
+    chown system system /sys/class/devfreq/ddrfreq_up_threshold/max_freq
+    chmod 664 /sys/class/devfreq/ddrfreq_up_threshold/max_freq
+    chown system system /sys/class/devfreq/ddrfreq_up_threshold/min_freq
+    chmod 664 /sys/class/devfreq/ddrfreq_up_threshold/min_freq
+    chown system system /sys/class/devfreq/ddrfreq_up_threshold/ddr_bandwidth
+    chmod 664 /sys/class/devfreq/ddrfreq_up_threshold/ddr_bandwidth
+    chown system system /sys/class/devfreq/ddrfreq_up_threshold/cur_freq
+    chmod 664 /sys/class/devfreq/ddrfreq_up_threshold/cur_freq
+    chown system system /sys/class/devfreq/ddrfreq_up_threshold/available_frequencies
+    chmod 664 /sys/class/devfreq/ddrfreq_up_threshold/available_frequencies
+    chown system system /sys/class/devfreq/ddrfreq_up_threshold/polling_interval
+    chmod 664 /sys/class/devfreq/ddrfreq_up_threshold/polling_interval
+    
     chown system system /sys/class/graphics/fb0/lcd_cabc_mode
     chmod 664 /sys/class/graphics/fb0/lcd_cabc_mode
-
+    
     write /sys/kernel/mm/ksm/pages_to_scan 100
     write /sys/kernel/mm/ksm/sleep_millisecs 500
     write /sys/kernel/mm/ksm/run 1
@@ -58,26 +76,23 @@ on early-boot
 
     chown system system /sys/kernel/perfhub/cpuaffinity
     chmod 0660 /sys/kernel/perfhub/cpuaffinity
-
-on property:sys.boot_completed=1
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
-    restorecon_recursive /sys/devices/system/cpu/cpu0/cpufreq/interactive
-    chown system  system /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse
-    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse
-    setprop sys.perf.profile=1
+    
+    # Properly mount the sdcard
+    mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
+    mkdir /storage/sdcard1 0700 root root
 
 #Default
 on property:sys.perf.profile=1
-    setprop persist.sys.go_hispeed_load 99
-    setprop persist.sys.hispeed_freq 1209600
+    setprop persist.sys.go_hispeed_load 91
+    setprop persist.sys.hispeed_freq 806400
     setprop persist.sys.io_is_busy 1
     setprop persist.sys.boostpulse_duration 80000
-    setprop persist.sys.target_loads 70:604800:75:806400:90:1209600:95
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load ${persist.sys.go_hispeed_load}
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq ${persist.sys.hispeed_freq}
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy ${persist.sys.io_is_busy}
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse_duration ${persist.sys.boostpulse_duration}
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads ${persist.sys.target_loads}
+    setprop persist.sys.target_loads 70:604800:80:1017600:90:1401600:95
+    write /sys/devices/system/cpu/cpu0/cpufreq/ondemand/go_hispeed_load ${persist.sys.go_hispeed_load}
+    write /sys/devices/system/cpu/cpu0/cpufreq/ondemand/hispeed_freq ${persist.sys.hispeed_freq}
+    write /sys/devices/system/cpu/cpu0/cpufreq/ondemand/io_is_busy ${persist.sys.io_is_busy}
+    write /sys/devices/system/cpu/cpu0/cpufreq/ondemand/boostpulse_duration ${persist.sys.boostpulse_duration}
+    write /sys/devices/system/cpu/cpu0/cpufreq/ondemand/target_loads ${persist.sys.target_loads}
     setprop persist.sys.sampling_down_facto 1
     setprop persist.sys.sampling_rate 10000
     setprop persist.sys.up_threshold 99
@@ -99,13 +114,13 @@ on property:sys.perf.profile=2
     setprop persist.sys.go_hispeed_load 95
     setprop persist.sys.hispeed_freq 1516800
     setprop persist.sys.io_is_busy 1
-    setprop persist.sys.boostpulse_duration 160000
+    setprop persist.sys.boostpulse_duration 120000
     setprop persist.sys.target_loads 30:604800:40:806400:50:1209600:85
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load ${persist.sys.go_hispeed_load}
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq ${persist.sys.hispeed_freq}
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy ${persist.sys.io_is_busy}
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse_duration ${persist.sys.boostpulse_duration}
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads ${persist.sys.target_loads}
+    write /sys/devices/system/cpu/cpu0/cpufreq/ondemand/go_hispeed_load ${persist.sys.go_hispeed_load}
+    write /sys/devices/system/cpu/cpu0/cpufreq/ondemand/hispeed_freq ${persist.sys.hispeed_freq}
+    write /sys/devices/system/cpu/cpu0/cpufreq/ondemand/io_is_busy ${persist.sys.io_is_busy}
+    write /sys/devices/system/cpu/cpu0/cpufreq/ondemand/boostpulse_duration ${persist.sys.boostpulse_duration}
+    write /sys/devices/system/cpu/cpu0/cpufreq/ondemand/target_loads ${persist.sys.target_loads}
     setprop persist.sys.sampling_down_facto 4
     setprop persist.sys.sampling_rate 50000
     setprop persist.sys.up_threshold 85
@@ -129,11 +144,11 @@ on property:sys.perf.profile=3
     setprop persist.sys.io_is_busy 0
     setprop persist.sys.boostpulse_duration 80000
     setprop persist.sys.target_loads 95
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load ${persist.sys.go_hispeed_load}
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq ${persist.sys.hispeed_freq}
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy ${persist.sys.io_is_busy}
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse_duration ${persist.sys.boostpulse_duration}
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads ${persist.sys.target_loads}
+    write /sys/devices/system/cpu/cpu0/cpufreq/ondemand/go_hispeed_load ${persist.sys.go_hispeed_load}
+    write /sys/devices/system/cpu/cpu0/cpufreq/ondemand/hispeed_freq ${persist.sys.hispeed_freq}
+    write /sys/devices/system/cpu/cpu0/cpufreq/ondemand/io_is_busy ${persist.sys.io_is_busy}
+    write /sys/devices/system/cpu/cpu0/cpufreq/ondemand/boostpulse_duration ${persist.sys.boostpulse_duration}
+    write /sys/devices/system/cpu/cpu0/cpufreq/ondemand/target_loads ${persist.sys.target_loads}
     setprop persist.sys.sampling_down_facto 1
     setprop persist.sys.sampling_rate 10000
     setprop persist.sys.up_threshold 99
@@ -150,16 +165,20 @@ on property:sys.perf.profile=3
     write /sys/kernel/hmp/up_prio ${persist.sys.hmp_prio}
     write /sys/kernel/set_hmp_thresholds/enable 1
 
+
+
+on property:persist.sys.fingersense=1
+    write /sys/devices/platform/huawei_sensor/set_fingersense_enable 1
+
+on property:persist.sys.fingersense=0
+    write /sys/devices/platform/huawei_sensor/set_fingersense_enable 0
+
 on charger
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
-    restorecon_recursive /sys/devices/system/cpu/cpu0/cpufreq/interactive
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq 1516800
-    chown system  system /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse
-    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse
-    write /sys/devices/virtual/graphics/fb0/mode "U:1080x1920p-0"
-    start charger_huawei
-    start hw_ueventd
-    start oeminfo_nvm
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ondemand
+    restorecon_recursive /sys/devices/system/cpu/cpu0/cpufreq/ondemand
+    write /sys/devices/system/cpu/cpu0/cpufreq/ondemand/hispeed_freq 1516800
+    chown system  system /sys/devices/system/cpu/cpu0/cpufreq/ondemand/boostpulse
+    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/ondemand/boostpulse
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor ondemand
     write /sys/kernel/set_hmp_thresholds/enable 0
     write /sys/kernel/hmp/up_threshold 1020
@@ -169,6 +188,10 @@ on charger
     write /sys/class/devfreq/ddrfreq/min_freq 800000000
     write /sys/class/devfreq/ddrfreq/min_freq 0
     write /sys/class/devfreq/ddrfreq/max_freq 0
+    write /sys/devices/virtual/graphics/fb0/mode "U:1080x1920p-0"
+    start charger_huawei
+    #start hw_ueventd
+    start oeminfo_nvm
 
 on fs
     export ANDROID_STORAGE ""
@@ -218,7 +241,7 @@ on post-fs
     chmod 0660 /dev/block/mmcblk0p37
 
 on post-fs
-     modem_fs_chk
+#     modem_fs_chk
 on post-fs-data
 
     mkdir /data/pstorelog 0750 root log
@@ -248,7 +271,7 @@ on post-fs-data
     mkdir /data/hisi_logs/memorydump 0774 root system
 
     symlink /splash2/sim/offlinelogs /data/offlinelogs
-
+    
 on early-boot
 
 on boot
@@ -435,6 +458,15 @@ on boot
 	chown system system /sys/class/sensors/airpress_sensor/read_airpress
 	chown system system /sys/class/sensors/airpress_sensor/set_calidata
 
+    chown system system /sys/devices/platform/huawei_sensor/set_fingersense_enable
+    chmod 0660 /sys/devices/platform/huawei_sensor/set_fingersense_enable
+    chown system system /sys/devices/platform/huawei_sensor/fingersense_req_data
+    chmod 0660 /sys/devices/platform/huawei_sensor/fingersense_req_data
+    chown system system /sys/devices/platform/huawei_sensor/fingersense_data_ready
+    chmod 0440 /sys/devices/platform/huawei_sensor/fingersense_data_ready
+    chown system system /sys/devices/platform/huawei_sensor/fingersense_latch_data
+    chmod 0440 /sys/devices/platform/huawei_sensor/fingersense_latch_data
+
 	chown system system /sys/class/hall/hall/state
 	chown system system /sys/class/hall/hall/report
 	chown system system /sys/class/hall/hall/info
@@ -482,6 +514,11 @@ service charger_huawei /sbin/healthd -c
     user root
     group graphics
     disabled
+    
+#add for IR
+chown system system /dev/spidev0.0
+chmod 0660 /dev/spidev0.0
+#write /sys/class/spi_master/spi0/spi0.0/misp_config "log_config 3 0"
 
 
 #service kerneldump /system/etc/kerneldump.sh 
