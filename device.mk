@@ -164,14 +164,11 @@ $(BOOT_RAMDISK_SRC)/fstab.goldfish:$(BOOT_RAMDISK_DST)/fstab.goldfish \
 $(BOOT_RAMDISK_SRC)/fstab.ranchu:$(BOOT_RAMDISK_DST)/fstab.ranchu \
 $(BOOT_RAMDISK_SRC)/etc/custom.init.mods.rc:$(BOOT_RAMDISK_DST)/custom.init.mods.rc \
 $(BOOT_RAMDISK_SRC)/etc/custom.init.usb.rc:$(BOOT_RAMDISK_DST)/custom.init.usb.rc \
-$(BOOT_RAMDISK_SRC)/etc/custom.init.fingerprint.rc:$(BOOT_RAMDISK_DST)/custom.init.fingerprint.rc \
 $(BOOT_RAMDISK_SRC)/etc/init.goldfish.rc:$(BOOT_RAMDISK_DST)/init.goldfish.rc \
 $(BOOT_RAMDISK_SRC)/etc/init.ranchu.rc:$(BOOT_RAMDISK_DST)/init.ranchu.rc \
 $(BOOT_RAMDISK_SRC)/etc/init.hi3635.rc:$(BOOT_RAMDISK_DST)/init.hi3635.rc \
 $(BOOT_RAMDISK_SRC)/etc/init.recovery.hi3635.rc:$(BOOT_RAMDISK_DST)/init.recovery.hi3635.rc \
 $(BOOT_RAMDISK_SRC)/etc/init.recovery.usb.rc:$(BOOT_RAMDISK_DST)/init.recovery.usb.rc \
-$(BOOT_RAMDISK_SRC)/etc/init.hi3635.usb.rc:$(BOOT_RAMDISK_DST)/init.hi3635.usb.rc \
-$(BOOT_RAMDISK_SRC)/etc/init.hi3635.gps.rc:$(BOOT_RAMDISK_DST)/init.hi3635.gps.rc \
 $(BOOT_RAMDISK_SRC)/etc/ueventd.hi3635.rc:$(BOOT_RAMDISK_DST)/ueventd.hi3635.rc \
 $(BOOT_RAMDISK_SRC)/etc/ueventd.goldfish.rc:$(BOOT_RAMDISK_DST)/ueventd.goldfish.rc \
 $(BOOT_RAMDISK_SRC)/etc/ueventd.ranchu.rc:$(BOOT_RAMDISK_DST)/ueventd.ranchu.rc \
