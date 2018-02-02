@@ -126,5 +126,10 @@ on property:rild.rild1_ready_to_start=false
 #End ril daemon
 ###################
 
+# add service fingerprintd by Speedo
+service fingerprintd /system/bin/fingerprintd
+    class late_start
+    user system
+
 on property:ro.hardware.alter=*
     write /proc/sys/kernel/hardware_alter ${ro.hardware.alter}
