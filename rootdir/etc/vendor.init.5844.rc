@@ -1,3 +1,4 @@
+#Back to a working version
 on early-init
 
 on init
@@ -48,6 +49,13 @@ on boot
 	chmod 0664 /sys/bus/i2c/devices/0-0028/nfc_single_channel
 	chown nfc nfc /sys/bus/i2c/devices/0-0028/conf_for_factory
 	chmod 0444 /sys/bus/i2c/devices/0-0028/conf_for_factory
+	
+	#add for fingerprint
+      chmod  0660  /dev/fingerprint
+      chown  system  system  /dev/fingerprint
+      chmod  0660  /sys/devices/platform/fingerprint/irq
+      chown  system  system  /sys/devices/platform/fingerprint/irq
+      chown  system system /sys/devices/platform/fingerprint/fingerprint_chip_info
 
 	#Fix for nfc not able to access the 
 	#device node
@@ -59,4 +67,3 @@ service HwCamCfgSvr /system/bin/HwCamCfgSvr hi3635 PLK
     class main
     user media
     group audio camera inet net_bt net_bt_admin net_bw_acct drmrpc mediadrm system
-
