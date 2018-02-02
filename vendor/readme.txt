@@ -12,4 +12,4 @@ https://mega.nz/#!Mo0gQRxL!M5x9Jyjt7KNvSWjtGmm5_6RNuvIFFaRkeBtfTNQ19jU
 
 Files to use for H7 rom:
 it's B390 files but WiFi_B330 (wifi_B390 don't work properly)
-(link comming soon)
+http://www.mediafire.com/file/485w2s1ll13g8n5/Vendor_B390_wifi_B330.zip
