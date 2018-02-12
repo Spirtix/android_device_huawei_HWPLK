@@ -55,17 +55,6 @@
     </string-array>
 
     <!-- Set of NetworkInfo.getType() that reflect data usage. -->
-    <integer-array translatable="false" name="config_data_usage_network_types">
-        <item>0</item> <!-- TYPE_MOBILE -->
-        <item>2</item> <!-- TYPE_MOBILE_MMS -->
-        <item>3</item> <!-- TYPE_MOBILE_SUPL -->
-        <item>4</item> <!-- TYPE_MOBILE_DUN -->
-        <item>5</item> <!-- TYPE_MOBILE_HIPRI -->
-        <item>10</item> <!-- TYPE_MOBILE_FOTA -->
-        <item>11</item> <!-- TYPE_MOBILE_IMS -->
-        <item>12</item> <!-- TYPE_MOBILE_CBS -->
-        <item>14</item> <!-- TYPE_MOBILE_IA -->
-    </integer-array>
 	<!-- List of regexpressions describing the interface (if any) that represent tetherable
          Wifi interfaces.  If the device doesn't want to support tethering over Wifi this
          should be empty.  An example would be "softap.*" -->
@@ -274,7 +263,6 @@
 
     <!-- Does the notification LED support multiple colors?
                   Used to decide if the user can change the colors -->
-    <bool name="config_multiColorNotificationLed">true</bool>
 
     <!-- Default color for notification LED. -->
     <color name="config_defaultNotificationColor">#ff0000ff</color>
@@ -283,7 +271,6 @@
     <integer name="config_notificationsBatteryMediumARGB">0xffff7f00</integer>
 
     <!-- Does the battery LED support multiple colors? Used to decide if the user can change the colors -->
-    <bool name="config_multiColorBatteryLed">true</bool>
 
     <!-- When true use the linux /dev/input/event subsystem to detect the switch changes
          on the headphone/microphone jack. When false use the older uevent framework. -->
