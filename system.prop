@@ -253,4 +253,5 @@ persist.fw.force_adoptable=true
 
 #Custom RIL Class
 
-ro.telephony.ril_class=HuaweiRIL
+ro.telephony.ril_class=HwHisiRIL
+#ro.telephony.ril_class=HuaweiRIL
