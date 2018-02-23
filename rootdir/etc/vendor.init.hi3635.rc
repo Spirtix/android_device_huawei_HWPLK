@@ -77,10 +77,6 @@ on early-boot
     chown system system /sys/kernel/perfhub/cpuaffinity
     chmod 0660 /sys/kernel/perfhub/cpuaffinity
     
-    # Properly mount the sdcard
-    mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
-    mkdir /storage/sdcard1 0700 root root
-
 #Default
 on property:sys.perf.profile=1
     setprop persist.sys.go_hispeed_load 91
