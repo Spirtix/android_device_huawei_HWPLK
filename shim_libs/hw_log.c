@@ -40,6 +40,9 @@ void __android_logPower_buf_write(void){
 void __android_log_buf_print(void){
 }
 
+void __android_log_pmsg_file_read(void){
+}
+
 int isLogEnabled(void) {
     return 0;
 }

@@ -39,16 +39,11 @@ DEVICE_PACKAGE_OVERLAYS += \
 PRODUCT_PACKAGES += \
 	Snap
 
-# SHIM LIBS
-#PRODUCT_COPY_FILES += \
-#	$(LOCAL_PATH)/vendor/system/lib/libhwui.so:system/lib/libshim_hwui.so \
-#	$(LOCAL_PATH)/vendor/system/lib64/libhwui.so:system/lib64/libshim_hwui.so \
-#	$(LOCAL_PATH)/vendor/system/vendor/lib64/egl/libGLES_mali.so:system/vendor/lib64/libGLES_mali.so \
-#	$(LOCAL_PATH)/vendor/system/vendor/lib/egl/libGLES_mali.so:system/vendor/lib/libGLES_mali.so \
-#	$(LOCAL_PATH)/vendor/system/lib/libmedia.so:system/lib/libshim_media.so \
-#	$(LOCAL_PATH)/vendor/system/lib64/libmedia.so:system/lib64/libshim_media.so \
-#	$(LOCAL_PATH)/vendor/system/lib/libcamera_client.so:system/lib/libshim_camera_client.so \
-#	$(LOCAL_PATH)/vendor/system/lib64/libcamera_client.so:system/lib64/libshim_camera_client.so
+# LibShim
+PRODUCT_PACKAGES += \
+    libshim_cameraservice \
+    libshim_icu \
+    libshim_log
 
 #Bluetooth Missing xml files after build
 #That's probably not the propper way to do it!
