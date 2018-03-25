@@ -30,10 +30,9 @@ LOCAL_MODULE_CLASS := SHARED_LIBRARIES
 include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
-LOCAL_SRC_FILES := cam.cpp
-LOCAL_SHARED_LIBRARIES := libcameraservice
-LOCAL_MODULE := libshim_cameraservice
+LOCAL_SRC_FILES := camera.cpp
+LOCAL_SHARED_LIBRARIES := libcamera_client
+LOCAL_MODULE := libshim_camera
 LOCAL_MODULE_TAGS := optional
-LOCAL_MULTILIB := both
-LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+
 include $(BUILD_SHARED_LIBRARY)
