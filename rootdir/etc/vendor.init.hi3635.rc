@@ -190,6 +190,9 @@ on charger
     start oeminfo_nvm
 
 on fs
+# icu shim 
+    export LD_SHIM_LIBS "/system/bin/rild|system/lib64/libshim_icu.so:/system/lib/libril.so|/system/lib/libshim_icu.so:/system/lib64/libril.so|/system/lib64/libshim_icu.so:system/lib/hw/audio.primary.hi3635.so|/system/lib/libshim_icu.so:system/lib64/hw/audio.primary.hi3635.so|system/lib64/libshim_icu.so"
+
     export ANDROID_STORAGE ""
 
 
