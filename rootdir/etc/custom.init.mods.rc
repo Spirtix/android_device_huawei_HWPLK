@@ -1,12 +1,6 @@
 on init
 
-	#######################################
-	# Required shim libs LOS13 , we will have others for LOS14
-	# Remove the line for LOS 14 make bootanimation come back
-	#######################################
-	#export LD_SHIM_LIBS /system/lib/libhwui.so|/system/lib/libshim_hwui.so:/system/lib64/libhwui.so|/system/lib64/libshim_hwui.so:/system/lib/libcamera_client.so|/system/lib/libshim_camera_client.so:/system/lib64/libcamera_client.so|/system/lib64/libshim_camera_client.so:/system/lib/libmedia.so|/system/lib/libshim_media.so:/system/lib64/libmedia.so|/system/lib64/libshim_media.so
-
-
+	# new shim libs are moved to vendor.init.hi3635
 	#######################################
 	# CPU cores...
 	# Override them before boot
