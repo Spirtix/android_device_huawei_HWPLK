@@ -515,10 +515,10 @@ service charger_huawei /sbin/healthd -c
     group graphics
     disabled
     
-#add for IR
+#add for IR note that the chmod for spidec0.0 will not work here , but we do it later with a .sh file
 chown system system /dev/spidev0.0
 chmod 0660 /dev/spidev0.0
-#write /sys/class/spi_master/spi0/spi0.0/misp_config "log_config 3 0"
+write /sys/class/spi_master/spi0/spi0.0/misp_config "log_config 3 0"
 
 
 #service kerneldump /system/etc/kerneldump.sh 
