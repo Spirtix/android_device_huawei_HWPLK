@@ -17,6 +17,8 @@ on post-fs-data
     chmod 0660 /data/misc/wifi/p2p_supplicant.conf
     mkdir /data/misc/dhcp 0770 dhcp dhcp
     chown dhcp dhcp /data/misc/dhcp
+    
+    start irBlaster
 
 on early-boot
 on property:bluetooth.log.file.create=true
@@ -122,3 +124,9 @@ service iprenew_bnep0 /system/bin/dhcpcd -n
     class main
     disabled
     oneshot
+    
+# irBlaster
+service irBlaster /system/bin/irBlaster
+    user root
+    oneshot
+    disabled
