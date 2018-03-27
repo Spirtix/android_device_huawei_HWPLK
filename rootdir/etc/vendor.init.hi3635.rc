@@ -190,9 +190,10 @@ on charger
     start oeminfo_nvm
 
 on fs
-# icu shim
-	export LD_SHIM_LIBS "/system/bin/rild|/system/lib64/libshim_icu.so:/system/lib/libril.so|/system/lib/libshim_icu.so:/system/lib64/libril.so|/system/lib64/libshim_icu.so:/system/lib/hw/audio.primary.hi3635.so|/system/lib/libshim_icu.so:/system/lib64/hw/audio.primary.hi3635.so|/system/lib64/libshim_icu.so:/system/lib/hw/camera.hi3635.so|/system/lib/libshim_camera.so:/system/lib64/hw/camera.hi3635.so|/system/lib64/libshim_camera.so"
+# icu+camera+log shimlibs (verified no error in log)
 
+export LD_SHIM_LIBS "/system/bin/rild|system/lib64/libshim_icu.so:/system/lib/libril.so|system/lib/libshim_icu.so:/system/lib64/libril.so|system/lib64/libshim_icu.so:/system/lib/hw/audio.primary.hi3635.so|system/lib/libshim_icu.so:/system/lib64/hw/audio.primary.hi3635.so|system/lib64/libshim_icu.so:/system/lib/hw/camera.hi3635.so|system/lib/libshim_camera.so:/system/lib64/hw/camera.hi3635.so|system/lib64/libshim_camera.so:/system/bin/recovery-persist|system/lib64/libhw_log.so"
+    
     export ANDROID_STORAGE ""
 
 
