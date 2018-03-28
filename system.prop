@@ -110,6 +110,7 @@ ro.product.varprofile=true
 #ro.cofig.onlinemusic.enabled=true
 #ro.cofig.onlinevideo.enabled=true
 ro.config.lvm_mode=true
+qemu.hw.mainkeys=0
 
 ############################
 #phone prop dual sim
