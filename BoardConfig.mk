@@ -157,10 +157,7 @@ TARGET_PREBUILT_KERNEL := device/huawei/HWPLK/kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=hi3635 androidboot.selinux=permissive no_console_suspend=1 mem=3072M coherent_pool=512K mmcparts=mmcblk0:p1(vrl),p2(vrl_backup),p6(modemnvm_factory),p9(splash),p10(modemnvm_backup),p11(modemnvm_img),p12(modemnvm_system),p14(3rdmodemnvm),p15(3rdmodemnvmback),p17(modem_om),p20(modemnvm_update),p30(modem),p31(modem_dsp),p32(dfx),p33(3rdmodem) cpuidle_sysfs_switch=1
 BOARD_KERNEL_BASE := 0x00678000
 BOARD_KERNEL_PAGESIZE := 2048
-#BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x07588000 --tags_offset 0xffb88000
-KERNEL_OFFSET := 0x00008000
-RAMDISK_OFFSET := 0x07588000
-KERNEL_TAGS_OFFSET := 0xffb88000
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x07588000 --tags_offset 0xffb88000
 
 # PARTITIONS SIZES
 BOARD_BOOTIMAGE_PARTITION_SIZE := 25165824
