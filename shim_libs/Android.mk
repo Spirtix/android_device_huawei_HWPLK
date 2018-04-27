@@ -34,5 +34,21 @@ LOCAL_SRC_FILES := camera.cpp
 LOCAL_SHARED_LIBRARIES := libcamera_client
 LOCAL_MODULE := libshim_camera
 LOCAL_MODULE_TAGS := optional
+include $(BUILD_SHARED_LIBRARY)
 
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES := algo.cpp
+LOCAL_SHARED_LIBRARIES := libgui
+LOCAL_MODULE := libshim_algo
+LOCAL_MODULE_TAGS := optional
+include $(BUILD_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+LOCAL_C_INCLUDES += \
+    external/libexif \
+    frameworks/av
+
+LOCAL_MODULE := libshim
+LOCAL_SRC_FILES := shim.cpp
+LOCAL_SHARED_LIBRARIES := liblog libexif libmedia libstagefright_foundation
 include $(BUILD_SHARED_LIBRARY)
