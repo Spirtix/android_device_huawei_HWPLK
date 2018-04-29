@@ -45,7 +45,8 @@ PRODUCT_PACKAGES += \
     libshim_icu \
     libshim_camera \
     libhw_log \
-	libshim_algo
+	libshim_algo \
+	libshim_hwui
 
 #Bluetooth Missing xml files after build
 #That's probably not the propper way to do it!

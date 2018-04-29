@@ -21,19 +21,17 @@ LOCAL_MODULE_TAGS := optional
 include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
-LOCAL_SRC_FILES := icu55.c
 LOCAL_SHARED_LIBRARIES := libicuuc libicui18n
 LOCAL_MODULE := libshim_icu
-LOCAL_MODULE_TAGS := optional
-LOCAL_MULTILIB := both
-LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_SRC_FILES := icu55.c
 include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
-LOCAL_SRC_FILES := camera.cpp
-LOCAL_SHARED_LIBRARIES := libcamera_client
-LOCAL_MODULE := libshim_camera
+LOCAL_SRC_FILES := log.c
+LOCAL_MODULE := libshim_log
+LOCAL_MULTILIB := both
 LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
 include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
@@ -44,6 +42,14 @@ LOCAL_MODULE_TAGS := optional
 include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
+LOCAL_SRC_FILES := hwui.cpp
+LOCAL_SHARED_LIBRARIES := libui
+LOCAL_MODULE := libshim_hwui
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+include $(BUILD_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
 LOCAL_C_INCLUDES += \
     external/libexif \
     frameworks/av
@@ -51,4 +57,52 @@ LOCAL_C_INCLUDES += \
 LOCAL_MODULE := libshim
 LOCAL_SRC_FILES := shim.cpp
 LOCAL_SHARED_LIBRARIES := liblog libexif libmedia libstagefright_foundation
+include $(BUILD_SHARED_LIBRARY)
+
+# Camera
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES:= \
+    camera/Camera.cpp \
+    camera/CameraMetadata.cpp \
+    camera/CaptureResult.cpp \
+    camera/CameraParameters2.cpp \
+    camera/ICamera.cpp \
+    camera/ICameraClient.cpp \
+    camera/ICameraService.cpp \
+    camera/ICameraServiceListener.cpp \
+    camera/ICameraServiceProxy.cpp \
+    camera/ICameraRecordingProxy.cpp \
+    camera/ICameraRecordingProxyListener.cpp \
+    camera/camera2/ICameraDeviceUser.cpp \
+    camera/camera2/ICameraDeviceCallbacks.cpp \
+    camera/camera2/CaptureRequest.cpp \
+    camera/camera2/OutputConfiguration.cpp \
+    camera/CameraBase.cpp \
+    camera/CameraUtils.cpp \
+    camera/VendorTagDescriptor.cpp \
+    camera/CameraParameters.cpp \
+    ui/GraphicBufferAllocator.cpp \
+    ui/GraphicBuffer.cpp \
+    ui/GraphicBufferMapper.cpp \
+    huawei.c 
+
+LOCAL_SHARED_LIBRARIES := \
+    libcutils \
+    libutils \
+    liblog \
+    libbinder \
+    libhardware \
+    libui \
+    libgui \
+    libsync \
+    libcamera_metadata
+
+LOCAL_C_INCLUDES += \
+    $(LOCAL_PATH)/camera/include \
+    system/media/camera/include \
+    system/media/private/camera/include
+
+LOCAL_MODULE := libshim_camera
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
 include $(BUILD_SHARED_LIBRARY)
