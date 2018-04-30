@@ -54,11 +54,6 @@ LOCAL_C_INCLUDES += \
     external/libexif \
     frameworks/av
 
-LOCAL_MODULE := libshim
-LOCAL_SRC_FILES := shim.cpp
-LOCAL_SHARED_LIBRARIES := liblog libexif libmedia libstagefright_foundation
-include $(BUILD_SHARED_LIBRARY)
-
 # Camera
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES:= \
