@@ -18,6 +18,8 @@ on post-fs-data
     mkdir /data/misc/dhcp 0770 dhcp dhcp
     chown dhcp dhcp /data/misc/dhcp
 
+	start irBlaster
+	
 on early-boot
 on property:bluetooth.log.file.create=true
    mkdir /data/hwzd_logs/bt
@@ -122,3 +124,9 @@ service iprenew_bnep0 /system/bin/dhcpcd -n
     class main
     disabled
     oneshot
+	
+# irBlaster
+service irBlaster /system/bin/irBlaster
+    user root
+    oneshot
+    disabled
