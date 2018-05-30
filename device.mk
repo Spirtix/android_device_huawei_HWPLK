@@ -106,8 +106,7 @@ PRODUCT_COPY_FILES += \
 
 # LIGHTS
 PRODUCT_PACKAGES += \
-	lights.hi3635 \
-	sensors.hi3635
+	lights.hi3635
 
 # AUDIO
 PRODUCT_PACKAGES += \
