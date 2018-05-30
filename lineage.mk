@@ -32,8 +32,8 @@ BOARD_VENDOR := huawei
 PRODUCT_GMS_CLIENTID_BASE := android-huawei
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := hwplk
-PRODUCT_NAME := hwplk
+PRODUCT_DEVICE := HWPLK
+PRODUCT_NAME := lineage_HWPLK
 PRODUCT_BRAND := HUAWEI
 PRODUCT_MODEL := PLK-L01
 PRODUCT_MANUFACTURER := HUAWEI
