@@ -249,3 +249,6 @@ persist.fw.force_adoptable=true
 #Custom RIL Class
 
 ro.telephony.ril_class=HwHisiRIL
+
+#CAM
+camera.hal1.packagelist=com.google.android.GoogleCamera

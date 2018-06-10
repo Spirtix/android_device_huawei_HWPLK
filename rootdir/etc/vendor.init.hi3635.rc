@@ -520,6 +520,9 @@ chown system system /dev/spidev0.0
 chmod 0660 /dev/spidev0.0
 write /sys/class/spi_master/spi0/spi0.0/misp_config "log_config 3 0"
 
+#HAL3
+setprop persist.camera.HAL3.enabled 1
+
 
 #service kerneldump /system/etc/kerneldump.sh 
 #    class main
