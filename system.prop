@@ -5,12 +5,6 @@ ro.sys.fw.dex2oat_thread_count=4
 ro.config.max_starting_bg=8
 ro.sys.fw.use_trim_settings=true
 
-#Huawei Perfhub is related to camera
-
-ro.config.hw_perfhub=true
-
-build.hisi_perf_opt=true
-
 #add props
 
 ro.adb.secure=0
