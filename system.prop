@@ -252,3 +252,4 @@ ro.telephony.ril_class=HwHisiRIL
 
 #CAM
 camera.hal1.packagelist=com.google.android.GoogleCamera
+persist.camera.HAL3.enabled=1
