@@ -10,11 +10,23 @@ on post-fs
 
 on post-fs-data
 
-    mkdir /data/gps
-    mkdir /data/gps/log
-    chown root system /data/gps
+    mkdir /data/gps 775 gps system
+    mkdir /data/log/gps_log 775 gps system
+    mkdir /data/log/gps_log/.tmp 775 gps system
+    mkdir /data/log/gps_log/gps 775 gps system
+    mkdir /data/log/gps_log/lhd 775 gps system
+
+    chmod 775 /data/gps/gpsconfig.xml
+    chown system system /data/gps/gpsconfig.xml
+ 
+    chown system system /data/gps
     chmod 775 /data/gps
-    chmod 770 /data/gps/log
+	chmod 660 /data/gps/.flp.interface.pipe.to_gpsd
+    chmod 660 /data/gps/.flp.interface.pipe.to_jni
+    chmod 660 /data/gps/.gps.interface.pipe.to_gpsd
+    chmod 660 /data/gps/.gps.interface.pipe.to_jni
+    chmod 660 /data/gps/.pipe.gpsd_to_lhd.to_client
+    chmod 660 /data/gps/.pipe.gpsd_to_lhd.to_server
 
     mkdir /data/hwzd_logs
     mkdir /data/hwzd_logs/gps_log
@@ -24,32 +36,24 @@ on post-fs-data
 on early-boot
 
 on boot
+	start gpsdaemon
 
-    chmod 660 /dev/ttyAMA3
+	chown root system /dev/ttyAMA3
+    chmod 0664 /dev/ttyAMA3
+    chown root system /dev/gpstty
+    chmod 0664 /dev/gpstty
+    chown gps system /dev/appvcom9
+    chmod 0660 /dev/appvcom9
+    chown root system /proc/gps/nstandby
+    chmod 0664 /proc/gps/nstandby
     
-    #Note only 1 out of those 3 following gps daemons will start
-    #This seems intentional
-    service gpsdaemon /system/bin/gpsdaemon
+service gpsdaemon /system/bin/gpsdaemon
     class late_start
     oneshot
 
-    service gpsd_47531  /system/bin/glgps47531 -c /data/gps/gpsconfig.xml
-    socket gps seqpacket 660 root root
+service gpsd_47531  /system/bin/glgps47531 -c /data/gps/gpsconfig.xml
+    socket gps seqpacket 660 gps system
     class late_start
-    user root
-    group system inet sdcard_rw
-    disabled
-
-    service gpsdcl_47531  /system/bin/glgps47531cl -c /data/gps/gpsconfig.xml
-    socket gps seqpacket 660 root root
-    class late_start
-    user root
-    group system inet sdcard_rw
-    disabled
-    
-    service gpsd_4752  /system/bin/glgps4752 -c /data/gps/gpsconfig.xml
-    socket gps seqpacket 660 root root
-    class late_start
-    user root
-    group system inet sdcard_rw
+    user gps
+    group system inet sdcard_rw wakelock
     disabled
