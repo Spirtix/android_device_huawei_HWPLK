@@ -19,18 +19,15 @@
 #define STATE_ON "state=1"
 
 #define KERNEL_HMP_PATH "/sys/kernel/hmp/"
-#define DDRFREQ__PATH	"/sys/class/devfreq/ddrfreq"
-#define GPUFREQ_PATH "/sys/class/devfreq/gpufreq/"
-#define GPU_ONDEMAND_PATH	"/sys/class/devfreq/gpufreq/mali_ondemand"
+#define DDRFREQ__PATH "/sys/devices/ddrfreq/devfreq/ddrfreq/"
+#define GPUFREQ_PATH "/sys/devices/e8600000.mali/devfreq/gpufreq/"
+#define GPU_ONDEMAND_PATH "/sys/devices/e8600000.mali/devfreq/gpufreq/mali_ondemand/"
 
 #define CPUFREQ_PATH0 "/sys/devices/system/cpu/cpu0/cpufreq/"
 #define CPUFREQ_PATH1 "/sys/devices/system/cpu/cpu4/cpufreq/"
 
 #define INTERACTIVE_PATH0 "/sys/devices/system/cpu/cpu0/cpufreq/interactive/"
 #define INTERACTIVE_PATH1 "/sys/devices/system/cpu/cpu4/cpufreq/interactive/"
-
-#define ONDEMAND_PATH0 "/sys/devices/system/cpu/cpu0/cpufreq/ondemand/"
-#define ONDEMAND_PATH1 "/sys/devices/system/cpu/cpu4/cpufreq/ondemand/"
 
 #define TAP_TO_WAKE_NODE "/sys/touchscreen/easy_wakeup_gesture"
 #define TAP_TO_WAKE_ENABLE "/sys/touchscreen/wakeup_gesture_enable"
@@ -53,16 +50,10 @@ typedef struct interactive_governor_settings {
     char *target_loads;
     int scaling_min_freq;
     int scaling_max_freq;
-} power_profile_cpu0;
-
-typedef struct ondemand_governor_settings {
-    int io_is_busy;
-    int sampling_down_factor;
-    int sampling_rate;
-    int up_threshold;
-    int scaling_min_freq;
-    int scaling_max_freq;
-} power_profile_cpu4;
+    int timer_rate;
+    int timer_slack;
+    int min_sample_time;
+} power_profile_cpu;
 
 typedef struct other_settings {
     int hmp_up;
@@ -78,60 +69,81 @@ typedef struct other_settings {
     unsigned long animation_boost_freq;
 } power_profile_other;
 
-static power_profile_cpu0 profiles0[PROFILE_MAX] = {
+static power_profile_cpu profiles0[PROFILE_MAX] = {
     [PROFILE_POWER_SAVE] = {
         .go_hispeed_load = 99,
-        .hispeed_freq = 1209600,
+        .hispeed_freq = 806400,
         .io_is_busy = 0,
-        .boostpulse_duration = 80000,
-        .target_loads = "95",
+        .boostpulse_duration = 40000,
+        .target_loads = "80",
         .scaling_min_freq = 403200,
-        .scaling_max_freq = 806400,
+        .scaling_max_freq = 1017600,
+        .timer_rate = 30000,
+        .timer_slack = 40000,
+        .min_sample_time = 100000,
     },
     [PROFILE_BALANCED] = {
-        .go_hispeed_load = 99,
+        .go_hispeed_load = 80,
+        .hispeed_freq = 1017600,
+        .io_is_busy = 1,
+        .boostpulse_duration = 40000,
+        .target_loads = "20 403200:30 806400:50 1017600:60 1209600:70",
+        .scaling_min_freq = 403200,
+        .scaling_max_freq = 1516800,
+        .timer_rate = 30000,
+        .timer_slack = 40000,
+        .min_sample_time = 300000,
+    },
+    [PROFILE_HIGH_PERFORMANCE] = {
+        .go_hispeed_load = 60,
         .hispeed_freq = 1209600,
         .io_is_busy = 1,
         .boostpulse_duration = 80000,
-        .target_loads = "70:604800:75:806400:90:1209600:95",
+        .target_loads = "20 403200:30 806400:50 1017600:60 1209600:70",
         .scaling_min_freq = 403200,
         .scaling_max_freq = 1516800,
-    },
-    [PROFILE_HIGH_PERFORMANCE] = {
-        .go_hispeed_load = 95,
-        .hispeed_freq = 1516800,
-        .io_is_busy = 1,
-        .boostpulse_duration = 160000,
-        .target_loads = "30:604800:40:806400:50:1209600:85",
-        .scaling_min_freq = 403200,
-        .scaling_max_freq = 1516800,
+        .timer_rate = 30000,
+        .timer_slack = 40000,
+        .min_sample_time = 300000,
     },
 };
 
-static power_profile_cpu4 profiles1[PROFILE_MAX] = {
+static power_profile_cpu profiles1[PROFILE_MAX] = {
     [PROFILE_POWER_SAVE] = {
+    	.go_hispeed_load = 99,
+    	.hispeed_freq = 1209600,
         .io_is_busy = 0,
-        .sampling_down_factor = 1,
-        .sampling_rate = 10000,
-        .up_threshold = 99,
+        .boostpulse_duration = 40000,
+        .target_loads = "80",
         .scaling_min_freq = 1017600,
         .scaling_max_freq = 1209600,
+        .timer_rate = 40000,
+        .timer_slack = 50000,
+        .min_sample_time = 100000,
     },
     [PROFILE_BALANCED] = {
+        .go_hispeed_load = 80,
+    	.hispeed_freq = 1401600,
         .io_is_busy = 1,
-        .sampling_down_factor = 1,
-        .sampling_rate = 10000,
-        .up_threshold = 99,
+        .boostpulse_duration = 40000,
+        .target_loads = "75",
         .scaling_min_freq = 1017600,
         .scaling_max_freq = 2016000,
+        .timer_rate = 40000,
+        .timer_slack = 50000,
+        .min_sample_time = 300000,
     },
     [PROFILE_HIGH_PERFORMANCE] = {
+        .go_hispeed_load = 60,
+    	.hispeed_freq = 1612800,
         .io_is_busy = 1,
-        .sampling_down_factor = 4,
-        .sampling_rate = 50000,
-        .up_threshold = 85,
+        .boostpulse_duration = 80000,
+        .target_loads = "70",
         .scaling_min_freq = 1017600,
         .scaling_max_freq = 2016000,
+        .timer_rate = 40000,
+        .timer_slack = 50000,
+        .min_sample_time = 300000,
     },
 };
 
@@ -140,23 +152,23 @@ static power_profile_other profiles2[PROFILE_MAX] = {
         .hmp_up = 1008,
         .hmp_down = 768,
         .hmp_prio = 140,
-        .ddr_max_freq = 360000000,
+        .ddr_max_freq = 400000000,
         .ddr_min_freq = 120000000,
         .ddr_polling_interval = 20,
         .gpu_max_freq = 360000000,
         .gpu_min_freq = 288000000,
         .gpu_polling_interval = 20,
         .animation_boost = 0,
-        .animation_boost_freq = 480000000,
+        .animation_boost_freq = 360000000,
     },
     [PROFILE_BALANCED] = {
         .hmp_up = 978,
         .hmp_down = 672,
         .hmp_prio = 140,
-        .ddr_max_freq = 667000000,
+        .ddr_max_freq = 800000000,
         .ddr_min_freq = 120000000,
         .ddr_polling_interval = 40,
-        .gpu_max_freq = 480000000,
+        .gpu_max_freq = 600000000,
         .gpu_min_freq = 288000000,
         .gpu_polling_interval = 40,
         .animation_boost = 1,
@@ -169,7 +181,7 @@ static power_profile_other profiles2[PROFILE_MAX] = {
         .ddr_max_freq = 800000000,
         .ddr_min_freq = 120000000,
         .ddr_polling_interval = 50,
-        .gpu_max_freq = 600000000,
+        .gpu_max_freq = 680000000,
         .gpu_min_freq = 288000000,
         .gpu_polling_interval = 50,
         .animation_boost = 1,
