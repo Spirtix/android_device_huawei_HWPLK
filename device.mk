@@ -147,10 +147,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	hwcomposer.hi3635
 
-# POWER HAL
-# PRODUCT_PACKAGES += \
-	power.hi3635
-
 # RAMDISK
 PRODUCT_PACKAGES += \
 	init.hi3635.power.sh
