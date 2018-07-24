@@ -49,3 +49,6 @@ int isLogEnabled(void) {
 
 void __hi_log_print(void){
 }
+
+void __android_log_pmsg_file_write(void){
+}

@@ -1,24 +1,24 @@
-/*
- * Copyright (C) 2016 The CyanogenMod Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+#define LOG_TAG "libshim"
 
+#include <cutils/log.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
 #include <media/stagefright/MediaBufferGroup.h>
 #include <media/IMediaSource.h>
 #include <media/stagefright/MediaSource.h>
 
 extern "C" {
+
+/* libaudio_route */
+extern int pop_seq_init() { return 0; };
+extern int pop_seq_set() { return 0; };
+extern int force_flush_set() { return 0; };
+
+extern int isCommrilSupportFullNetwork() { return 1; };
+
+void _ZNK7android13SensorManager13getSensorListEPPKPKNS_6SensorE();
+void _ZNK7android13SensorManager13getSensorListEPPKPKNS_6SensorE(){}
 
 extern android::MediaBufferGroup*   _ZN7android16MediaBufferGroupC1Ev() {
     return new android::MediaBufferGroup(0);

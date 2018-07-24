@@ -1,0 +1,6 @@
+# glgps47531 daemon
+type glgps47531, domain, domain_deprecated;
+type glgps47531_exec, exec_type, file_type;
+
+# Started by init
+init_daemon_domain(glgps47531)

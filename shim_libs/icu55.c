@@ -1,30 +1,18 @@
 #include "unicode/ucnv.h"
 
-
-U_CAPI UConverter* U_EXPORT2
+U_STABLE UConverter* U_EXPORT2
 ucnv_open_55(const char *converterName, UErrorCode *err)
 {
     return ucnv_open(converterName, err);
 }
 
-U_CAPI void  U_EXPORT2
+U_STABLE void  U_EXPORT2
 ucnv_close_55(UConverter * converter)
 {
     return ucnv_close(converter);
 }
 
-U_CAPI void U_EXPORT2 UCNV_TO_U_CALLBACK_STOP_55(
-                  const void *context,
-                  UConverterToUnicodeArgs *toUArgs,
-                  const char* codeUnits,
-                  int32_t length,
-                  UConverterCallbackReason reason,
-                  UErrorCode * err)
-{
-    UCNV_TO_U_CALLBACK_STOP(context, toUArgs, codeUnits, length, reason, err);
-}
-
-U_CAPI void U_EXPORT2 UCNV_FROM_U_CALLBACK_STOP_55(
+U_STABLE void U_EXPORT2 UCNV_FROM_U_CALLBACK_STOP_55(
                   const void *context,
                   UConverterFromUnicodeArgs *fromUArgs,
                   const UChar* codeUnits,
@@ -36,7 +24,17 @@ U_CAPI void U_EXPORT2 UCNV_FROM_U_CALLBACK_STOP_55(
     UCNV_FROM_U_CALLBACK_STOP (context, fromUArgs, codeUnits, length, codePoint, reason, err);
 }
 
-U_CAPI void U_EXPORT2
+U_STABLE void U_EXPORT2 UCNV_TO_U_CALLBACK_STOP_55(
+                  const void *context,
+                  UConverterToUnicodeArgs *toUArgs,
+                  const char* codeUnits,
+                  int32_t length,
+                  UConverterCallbackReason reason,
+                  UErrorCode * err) {
+    UCNV_TO_U_CALLBACK_STOP (context, toUArgs, codeUnits, length, reason, err);
+}
+
+U_STABLE void U_EXPORT2
 ucnv_setToUCallBack_55(UConverter * converter,
                      UConverterToUCallback newAction,
                      const void* newContext,
@@ -47,7 +45,7 @@ ucnv_setToUCallBack_55(UConverter * converter,
     ucnv_setToUCallBack(converter, newAction, newContext, oldAction, oldContext, err);
 }
 
-U_CAPI void U_EXPORT2
+U_STABLE void U_EXPORT2
 ucnv_setFromUCallBack_55(UConverter * converter,
                        UConverterFromUCallback newAction,
                        const void *newContext,
@@ -58,7 +56,7 @@ ucnv_setFromUCallBack_55(UConverter * converter,
     ucnv_setFromUCallBack(converter, newAction, newContext, oldAction, oldContext, err);
 }
 
-U_CAPI void U_EXPORT2
+U_STABLE void U_EXPORT2
 ucnv_convertEx_55(UConverter *targetCnv, UConverter *sourceCnv,
                char **target, const char *targetLimit,
                const char **source, const char *sourceLimit,

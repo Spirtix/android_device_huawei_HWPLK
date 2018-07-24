@@ -35,9 +35,9 @@ It isn't actually built or used at all.
 * Use: reads the property ro.config.full_network_support
 * Notice: required by libbalong-ril.so
 */
-bool isCommrilSupportFullNetwork(void){
+int isCommrilSupportFullNetwork(){
     ALOGD("!!SHIM!! libbalong-ril.so-->libril.so/isCommrilSupportFullNetwork-->ro.config.full_network_support return true");
-    return true;
+    return 1;
 }
 
 /*

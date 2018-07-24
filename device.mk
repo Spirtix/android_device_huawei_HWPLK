@@ -37,16 +37,23 @@ DEVICE_PACKAGE_OVERLAYS += \
 
 # CAMERA
 PRODUCT_PACKAGES += \
+	Camera2 \
 	Snap
 
 # LibShim
 PRODUCT_PACKAGES += \
 	libshim \
     libshim_icu \
-    libshim_camera \
+    libshim_other_camera \
     libhw_log \
-	libshim_algo \
-	libshim_hwui
+    libshim_log \
+    libshim_algo \
+    libshim_hwui \
+    libshim_gpsd \
+
+#GPS
+PRODUCT_PACKAGES += \
+	libtinyxml
 
 #Bluetooth Missing xml files after build
 #That's probably not the propper way to do it!

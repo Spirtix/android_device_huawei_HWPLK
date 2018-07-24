@@ -23,3 +23,15 @@ extern "C" void _ZN7android10uirenderer12ProgramCacheC1ERNS0_10ExtensionsE(uint3
 extern "C" void _ZN7android10uirenderer10ExtensionsC1Ev(uint32_t Format, int Usage , const std::string *) { }
 
 extern "C" void _ZN7android10uirenderer12ProgramCacheD1Ev(uint32_t Format, int Usage , const std::string *) { }
+
+extern "C" {
+    void _ZN7android13GraphicBufferC1EjjijNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEE(
+            void *(pthis), uint32_t inWidth, uint32_t inHeight, int inFormat,
+            uint32_t inUsage, std::string requestorName);
+
+    void _ZN7android13GraphicBufferC1Ejjij(void *(pthis), uint32_t inWidth, uint32_t inHeight, int inFormat, uint32_t inUsage) {
+        _ZN7android13GraphicBufferC1EjjijNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEE(
+            pthis, inWidth, inHeight, inFormat, inUsage, "<Unknown>");
+    }
+
+}

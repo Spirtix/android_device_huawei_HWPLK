@@ -16,34 +16,35 @@
 #
 # hwcamcfgsvr
 #
-
-type hwcamcfgsvr, domain;
-type hwcamcfgsvr_exec, exec_type, file_type;
-
-init_daemon_domain(hwcamcfgsvr)
-
-allow hwcamcfgsvr video_device:chr_file rw_file_perms;
-allow hwcamcfgsvr sysfs_wake_lock:file rw_file_perms;
-allow hwcamcfgsvr servicemanager:binder { call transfer };
-allow hwcamcfgsvr mediaserver:binder { transfer };
-allow hwcamcfgsvr mediaserver:fd { use };
-allow hwcamcfgsvr camera_data_file:dir rw_dir_perms;
-allow hwcamcfgsvr camera_data_file:file { setattr rw_file_perms };
-allow hwcamcfgsvr default_android_service:service_manager { add find };
-allow hwcamcfgsvr surfaceflinger:fd { use };
-allow hwcamcfgsvr sensorservice_service:service_manager { find };
-allow hwcamcfgsvr system_server:binder { call transfer };
-allow hwcamcfgsvr property_socket:sock_file { rw_file_perms };
-allow hwcamcfgsvr init:unix_stream_socket { connectto };
-allow hwcamcfgsvr system_server:unix_stream_socket { read write };
-allow hwcamcfgsvr perfhub:binder { call transfer };
-allow hwcamcfgsvr ion_device:chr_file r_file_perms;
-allow hwcamcfgsvr proc_meminfo:file r_file_perms;
-allow hwcamcfgsvr proc:file r_file_perms;
-allow hwcamcfgsvr properties_device:file r_file_perms;
-allow hwcamcfgsvr cameraserver:binder { transfer };
-allow hwcamcfgsvr cameraserver:fd { use };
-allow hwcamcfgsvr camera_data_file:file create_file_perms;
-allow hwcamcfgsvr permission_service:service_manager { find };
-allow hwcamcfgsvr sysfs:file r_file_perms;
-allow hwcamcfgsvr system_server:fd { use };
+#
+#type hwcamcfgsvr, domain;
+#type hwcamcfgsvr_exec, exec_type, file_type;
+#
+#init_daemon_domain(hwcamcfgsvr)
+#
+#allow hwcamcfgsvr video_device:chr_file rw_file_perms;
+#allow hwcamcfgsvr sysfs_wake_lock:file rw_file_perms;
+#allow hwcamcfgsvr servicemanager:binder { call transfer };
+#allow hwcamcfgsvr mediaserver:binder { transfer };
+#allow hwcamcfgsvr mediaserver:fd { use };
+#allow hwcamcfgsvr mediaserver:service_manager { find };
+#allow hwcamcfgsvr camera_data_file:dir rw_dir_perms;
+#allow hwcamcfgsvr camera_data_file:file { setattr rw_file_perms };
+#allow hwcamcfgsvr default_android_service:service_manager { add find };
+#allow hwcamcfgsvr surfaceflinger:fd { use };
+#allow hwcamcfgsvr sensorservice_service:service_manager { find };
+#allow hwcamcfgsvr system_server:binder { call transfer };
+#allow hwcamcfgsvr property_socket:sock_file { rw_file_perms };
+#allow hwcamcfgsvr init:unix_stream_socket { connectto };
+#allow hwcamcfgsvr system_server:unix_stream_socket { read write };
+#allow hwcamcfgsvr perfhub:binder { call transfer };
+#allow hwcamcfgsvr ion_device:chr_file r_file_perms;
+#allow hwcamcfgsvr proc_meminfo:file r_file_perms;
+#allow hwcamcfgsvr proc:file r_file_perms;
+#allow hwcamcfgsvr properties_device:file r_file_perms;
+#allow hwcamcfgsvr cameraserver:binder { transfer };
+#allow hwcamcfgsvr cameraserver:fd { use };
+#allow hwcamcfgsvr camera_data_file:file create_file_perms;
+#allow hwcamcfgsvr permission_service:service_manager { find };
+#allow hwcamcfgsvr sysfs:file r_file_perms;
+#allow hwcamcfgsvr system_server:fd { use };
