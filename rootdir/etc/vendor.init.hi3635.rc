@@ -193,7 +193,7 @@ on fs
 # icu+camera+log shimlibs (verified no error in log)
 
 #export LD_SHIM_LIBS "/system/bin/rild|system/lib64/libshim_icu.so:/system/lib/libril.so|system/lib/libshim_icu.so:/system/lib64/libril.so|system/lib64/libshim_icu.so:/system/lib/hw/audio.primary.hi3635.so|system/lib/libshim_icu.so:/system/lib64/hw/audio.primary.hi3635.so|system/lib64/libshim_icu.so:/system/lib/hw/camera.hi3635.so|system/lib/libshim_camera.so:/system/lib64/hw/camera.hi3635.so|system/lib64/libshim_camera.so:/system/bin/recovery-persist|system/lib64/libhw_log.so"
-    export LD_SHIM_LIBS "/system/bin/recovery-persist|/system/lib64/libhw_log.so:/system/bin/rild|/system/lib64/libshim_icu.so:/system/lib/libril.so|/system/lib/libshim_icu.so:/system/lib64/libril.so|/system/lib64/libshim_icu.so:/system/lib/hw/audio.primary.hi3635.so|/system/lib/libshim_icu.so:/system/lib64/hw/audio.primary.hi3635.so|/system/lib64/libshim_icu.so:/system/lib/libhuaweiprocessing.so|libshim_icu.so:/system/bin/logserver|libshim_log.so:/system/bin/thermal-daemon|libshim_log.so:/system/lib64/libsensorservice.so|libhw_log.so:/system/lib64/hw/sensorhub.default.so|libhw_log.so:/system/lib/hwcam/hwcam.hi3635.m.PLK.so|libshim_hwui.so:/system/lib/libcamera_algo.so|libshim_hwui.so:/system/lib/libcamera_algo.so|libshim.so:/system/bin/glgps47531|libshim_icu.so"
+    export LD_SHIM_LIBS "/system/bin/recovery-persist|/system/lib64/libhw_log.so:/system/bin/rild|/system/lib64/libshim_icu.so:/system/lib/libril.so|/system/lib/libshim_icu.so:/system/lib64/libril.so|/system/lib64/libshim_icu.so:/system/lib/hw/audio.primary.hi3635.so|/system/lib/libshim_icu.so:/system/lib64/hw/audio.primary.hi3635.so|/system/lib64/libshim_icu.so:/system/bin/logserver|libshim_log.so:/system/bin/thermal-daemon|libshim_log.so:/system/lib64/libsensorservice.so|libhw_log.so:/system/lib/hwcam/hwcam.hi3635.m.PLK.so|libshim_hwui.so:/system/lib/libcamera_algo.so|libshim_hwui.so:/system/lib/libcamera_algo.so|libshim.so:/system/bin/glgps47531|libshim_icu.so:/system/bin/glgps47531|libshim_algo.so"
     export ANDROID_STORAGE ""
 
 
@@ -552,12 +552,3 @@ service kmsgcat_cp /sbin/kmsgcat -r 4096 -n 25 -i /dev/cshell_log -f /data/hwzd_
 #    class main
 #    disabled
 #    oneshot
-
-on property:sys.boot_completed=1 && property:ro.config.hw_perfhub=true
-    start perfhub
-
-service perfhub /system/bin/perfhub
-    class late_start
-    user system
-    group system
-    disabled
